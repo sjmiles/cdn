@@ -10,21 +10,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../polymer/polymer.html">
 
-<link rel="import" href="../../iron-elements/iron-media-query.html">
-<link rel="import" href="../../iron-elements/iron-resizable-behavior.html">
-<link rel="import" href="../../iron-elements/icons/iron-icons.html">
+<link rel="import" href="../../iron-media-query/iron-media-query.html">
+<link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../../iron-icons/iron-icons.html">
 
-<link rel="import" href="../../paper-elements/paper-icon-button.html">
+<link rel="import" href="../../paper-icon-button/paper-icon-button.html">
 
-<link rel="import" href="../x-toolbar/x-toolbar.html">
-<link rel="import" href="../x-header/x-header.html">
-<link rel="import" href="../x-drawer/x-drawer.html">
+<link rel="import" href="../app-toolbar.html">
+<link rel="import" href="../app-header.html">
+<link rel="import" href="../app-drawer.html">
 
-<dom-module id="x-drawer-layout">
+<dom-module id="app-drawer-layout">
 
   <style>
 
     :host {
+
       display: block;
 
       --drawer-layout-trbl: {
@@ -33,6 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         bottom: 0;
         left: 0;
       };
+
     }
 
     :host([fullbleed]) {
@@ -81,25 +83,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <template>
 
-    <x-drawer id="drawer" opened="[[_drawerOpened(narrow, opened)]]" style$="[[_computeDrawerStyle(drawerWidth)]]">
+    <app-drawer id="drawer" opened="[[_drawerOpened(narrow, opened)]]" style$="[[_computeDrawerStyle(drawerWidth)]]">
+
       <content select="[drawer]"></content>
-    </x-drawer>
+
+    </app-drawer>
 
     <div id="main" style$="[[_computeMainStyle(narrow, drawerWidth)]]">
+
       <content></content>
+
       <div id="scrim" visible$="[[_scrimVisible(narrow, opened)]]" on-tap="toggleDrawer"></div>
+
     </div>
 
-    <iron-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]"
-        on-query-matches-changed="_onQueryMatchesChanged"></iron-media-query>
+    <iron-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></iron-media-query>
 
   </template>
 
   <script>
 
     Polymer({
-
-      is: 'x-drawer-layout',
 
       behaviors: [
         Polymer.IronResizableBehavior,

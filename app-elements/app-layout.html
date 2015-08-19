@@ -1,0 +1,25 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+<link rel="import" href="../app-header-layout.html">
+<link rel="import" href="../app-drawer-layout.html">
+
+<dom-module id="app-layout">
+  <template>
+
+    <app-drawer-layout opened="{{drawer}}">
+
+      <content select="[drawer]"></content>
+
+      <app-header-layout main>
+        <content></content>
+      </app-header-layout>
+
+    </app-drawer-layout>
+
+  </template>
+  <script>
+
+    Polymer({});
+
+  </script>
+</dom-module>
